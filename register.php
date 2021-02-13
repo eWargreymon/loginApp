@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     
-    <title>Login</title>
+    <title>Registro</title>
 </head>
 <body>
     
@@ -19,10 +19,14 @@
                 <div class="card bx">
                     <div class="card-body">
                         <div class="card-title">
-                            <h4>Bienvenido/a</h4>
+                            <h3>¡Hola!</h3>
+                            <h4>Introduce los siguientes datos para registrarte y poder acceder</h4>
                             <p class="card-text small text-muted">Introduce tus credenciales para iniciar sesión</p>
                         </div>
-                        <form action="index.php" method="POST">
+                        <form action="login.php" method="POST">
+                            <div class="form-group mt-2">
+                                <input type="text" class="form-control input-sm" name="name" required placeholder="Nombre">
+                            </div>
                             <div class="form-group mt-2">
                                 <input type="email" class="form-control input-sm" name="email" required placeholder="Email de acceso">
                             </div>
@@ -30,7 +34,10 @@
                                 <input type="password" class="form-control input-sm" name="password" required placeholder="Contraseña">
                             </div>
                             <div class="form-group mt-2">
-                                <input type="submit" class="btn btn-success btn-sm" name="entrar" value="Entrar">
+                                <input type="tel" class="form-control input-sm" name="phone" required placeholder="Teléfono">
+                            </div>
+                            <div class="form-group mt-2">
+                                <input type="submit" class="btn btn-success btn-sm" name="registrar" value="Regístrate">
                             </div>
                         </form>
                     </div>
