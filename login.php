@@ -23,7 +23,7 @@
                             <p class="card-text small text-muted">Introduce tus credenciales para iniciar sesión</p>
                         </div>
                         <form action="index.php" method="POST">
-                            <div class="form-group mt-2">
+                            <div class="form-group mt-3">
                                 <input type="email" class="form-control input-sm" name="email" required placeholder="Email de acceso">
                             </div>
                             <div class="form-group mt-2">
@@ -31,6 +31,7 @@
                             </div>
                             <div class="form-group mt-2">
                                 <input type="submit" class="btn btn-success btn-sm" name="entrar" value="Entrar">
+                                <a href="register.php" class="btn btn-info btn-sm" style="color:white">Regístrate</a>
                             </div>
                         </form>
                     </div>
