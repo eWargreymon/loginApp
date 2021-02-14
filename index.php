@@ -120,31 +120,42 @@ if(!$_SESSION['email']){
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <input type="text" value="John" required class="form-control form-control-sm">
+                    <form action="" method="POST">
+                        <div class="form-group mb-3">
+                            <input type="text" name="grupo" placeholder="¿Cuál es tu grupo favorito?" required class="form-control form-control-sm">
                         </div>
-                        <div class="mb-3">
-                            <input type="email" value="e@em.com" required class="form-control form-control-sm">
+                        <div class="form-group mb-3">
+                            <input type="text" name="peli" placeholder="¿Qué peli fue la última que viste?" required class="form-control form-control-sm">
                         </div>
-                        <div class="mb-3">
-                            <input type="tel" value="45585" required class="form-control form-control-sm">
+                        <div class="form-group mb-3">
+                            <input type="text" name="serie" placeholder="¿Y la última serie?" required class="form-control form-control-sm">
                         </div>
-                        <div class="mb-3">
-                            <select class="form-control form-control-sm">
-                                <option value="Graphic designer">Graphic designer</option>
-                                <option value="Web designer">Wev designer</option>
-                                <option value="Web developer">Web developer</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-sm btn-block btn-success">Save employee info</button>
+                        <div class="form-group mb-3">
+                            <input type="submit" name="agregar" value="Agregar datos" class="btn btn-sm btn-block btn-success">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <?php
+        if(isset($_POST['agregar'])){
+            $grupo = $_POST['grupo'];
+            $peli = $_POST['peli'];
+            $serie = $_POST['serie'];
+            $nombre = $usuario['nombre'];
+            $id = $usuario['id'];
+
+            $insert = "INSERT INTO datos (id, name, music, film, series) VALUES ('$id','$nombre','$grupo','$peli','$serie')";
+
+            if(mysqli_query($conn,$insert)){
+                echo "<script>alert('Datos guardados correctamente');</script>";
+            } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            }
+        }
+    ?>
 
 
 
