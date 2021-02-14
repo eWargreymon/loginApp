@@ -8,6 +8,7 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="css/style.css">
     
     <title>Registro</title>
@@ -21,7 +22,7 @@
                     <div class="card-body">
                         <div class="card-title">
                             <h3 style="text-align: center;">¡Hola!</h3>
-                            <h4 style="text-align: center;">Introduce los siguientes datos para registrarte y poder acceder</h4>
+                            <h5 style="text-align: center;" class="text-muted">Introduce los siguientes datos para registrarte y poder acceder</h5>
                         </div>
                         <form action="" method="POST">
                             <div class="form-group mt-3">

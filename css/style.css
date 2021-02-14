@@ -1,0 +1,14 @@
+body{
+    background-color: azure;
+}
+
+.bx{
+    box-shadow: 2px 2px 15px black;
+}
+
+.main-banner{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: rebeccapurple;
+    color: white;
+}
