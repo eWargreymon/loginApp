@@ -38,6 +38,7 @@
                             </div>
                             <div class="form-group mt-2">
                                 <input type="submit" class="btn btn-success btn-sm" name="registrar" value="Regístrate">
+                                <a href="login.php" class="btn btn-info btn-sm" style="color: white;">Volver a Login</a>
                             </div>
                         </form>
                     </div>

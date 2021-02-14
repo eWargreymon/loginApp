@@ -1,3 +1,8 @@
+<?php
+require 'connect.php'; 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +27,7 @@
                             <h4>Bienvenido/a</h4>
                             <p class="card-text small text-muted">Introduce tus credenciales para iniciar sesión</p>
                         </div>
-                        <form action="index.php" method="POST">
+                        <form action="" method="POST">
                             <div class="form-group mt-3">
                                 <input type="email" class="form-control input-sm" name="email" required placeholder="Email de acceso">
                             </div>
@@ -31,7 +36,7 @@
                             </div>
                             <div class="form-group mt-2">
                                 <input type="submit" class="btn btn-success btn-sm" name="entrar" value="Entrar">
-                                <a href="register.php" class="btn btn-info btn-sm" style="color:white">Regístrate</a>
+                                <a href="register.php" class="btn btn-info btn-sm" style="color:white">Ir a página de registro</a>
                             </div>
                         </form>
                     </div>
@@ -41,7 +46,33 @@
     </div>
     
 
+    <?php
 
+        if(isset($_POST['entrar'])){
+        
+            $email = $_POST['email'];
+            $password = md5($_POST['password']);
+
+            $sql = "SELECT * FROM usuarios WHERE correo='$email'";
+            $result = mysqli_query($conn,$sql);
+
+            if(mysqli_num_rows($result) > 0){
+
+                while ($usuario=mysqli_fetch_assoc($result)) {
+                    if($email==$usuario['correo'] && $password==$usuario['contraseña']){
+                        $_SESSION['email'] = $email;
+                        header('Location: index.php');
+                    } else {
+                        echo "<script>alert('Email o contraseña no válido');</script>";
+                    }
+                }
+            } else {
+                echo "No results found";
+            }
+
+        }
+
+    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js" integrity="sha384-5h4UG+6GOuV9qXh6HqOLwZMY4mnLPraeTrjT5v07o347pj6IkfuoASuGBhfDsp3d" crossorigin="anonymous"></script>
