@@ -28,7 +28,7 @@ if(!$_SESSION['email']){
     <!--Nav-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="dash.html">¡Hola, <?php 
+            <a class="navbar-brand" href="index.php">¡Hola, <?php 
                 $email = $_SESSION['email'];
         
                 $sql = "SELECT * FROM usuarios WHERE correo='$email'";
