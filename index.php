@@ -65,13 +65,31 @@ if(!$_SESSION['email']){
         <div class="row mt-2">
             <div class="justify-content-center">
                 <table class="table table-striped table-hover bg-light">
+                    <caption class="blockquote">Datos agregados por los usuarios registrados</caption>
                     <tr class="table-dark">
-                        <th>ID</th>
                         <th>Nombre</th>
                         <th>Grupo</th>
                         <th>Película</th>
                         <th>Serie</th>
                     </tr>
+                    <?php
+
+                    $select = "SELECT * FROM datos";
+                    $data = mysqli_query($conn,$select);
+
+                    if(mysqli_num_rows($data)>0){
+                        while ($dato= mysqli_fetch_assoc($data) ) {
+                            ?>
+                            <tr>
+                                <th><?php echo $dato['name']; ?></th>
+                                <th><?php echo $dato['music']; ?></th>
+                                <th><?php echo $dato['film']; ?></th>
+                                <th><?php echo $dato['series']; ?></th>
+                            </tr>
+                            <?php
+                        }
+                    }
+                    ?>
                 </table>
             </div>
         </div>
@@ -120,7 +138,7 @@ if(!$_SESSION['email']){
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="POST">
+                    <form action="index.php" method="POST">
                         <div class="form-group mb-3">
                             <input type="text" name="grupo" placeholder="¿Cuál es tu grupo favorito?" required class="form-control form-control-sm">
                         </div>
@@ -147,12 +165,37 @@ if(!$_SESSION['email']){
             $nombre = $usuario['nombre'];
             $id = $usuario['id'];
 
-            $insert = "INSERT INTO datos (id, name, music, film, series) VALUES ('$id','$nombre','$grupo','$peli','$serie')";
 
-            if(mysqli_query($conn,$insert)){
-                echo "<script>alert('Datos guardados correctamente');</script>";
+            $select = "SELECT * FROM datos";
+            $data = mysqli_query($conn,$select);
+            $found = false;
+            if(mysqli_num_rows($data)>0){
+                while ($dato= mysqli_fetch_assoc($data) ) {
+                    if($dato['id']==$id){
+                        $found = true;
+                    }
+                }
+            }
+            if($found){
+            
+                $update = "UPDATE datos SET music='$grupo', film='$peli', series='$serie' WHERE id='$id'";
+
+                if(mysqli_query($conn,$update)){
+                    echo "<script>alert('Tus datos se han actualizado');</script>";
+                    echo "<meta http-equiv='refresh' content='0'>";
+                } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
             } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+
+                $insert = "INSERT INTO datos (id, name, music, film, series) VALUES ('$id','$nombre','$grupo','$peli','$serie')";
+                
+                if(mysqli_query($conn,$insert)){
+                    echo "<script>alert('Datos guardados correctamente');</script>";
+                    echo "<meta http-equiv='refresh' content='0'>";
+                } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
             }
         }
     ?>
