@@ -63,7 +63,7 @@ session_start();
                         $_SESSION['email'] = $email;
                         header('Location: index.php');
                     } else {
-                        echo "<script>alert('Email o contraseña no válido');</script>";
+                        echo "<script>alert('Contraseña no válida');</script>";
                     }
                 }
             } else {

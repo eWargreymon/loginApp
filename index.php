@@ -68,9 +68,9 @@ if(!$_SESSION['email']){
                     <caption class="blockquote">Datos agregados por los usuarios registrados</caption>
                     <tr class="table-dark">
                         <th>Nombre</th>
-                        <th>Grupo</th>
-                        <th>Película</th>
-                        <th>Serie</th>
+                        <th>Grupo favorito</th>
+                        <th>Última película vista</th>
+                        <th>Útlima serie vista</th>
                     </tr>
                     <?php
 
@@ -119,7 +119,7 @@ if(!$_SESSION['email']){
                         <td><?php echo $usuario['correo']; ?></td>
                     </tr>
                     <tr>
-                        <th>Phone</th>
+                        <th>Teléfono</th>
                         <td><?php echo $usuario['telefono']; ?></td>
                     </tr>
                 </table>
